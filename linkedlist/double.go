@@ -1,10 +1,12 @@
 package linkedlist
 
+// Doubly linked list.
 type DLinkedList[T any] struct {
 	Head *DLinkNode[T]
 	Tail *DLinkNode[T]
 }
 
+// Simple constructer for DLinkedList
 func NewDLinkedList[T any]() *DLinkedList[T] {
 	return &DLinkedList[T]{
 		Head: nil,
@@ -12,6 +14,8 @@ func NewDLinkedList[T any]() *DLinkedList[T] {
 	}
 }
 
+// Initializes linked list to array.
+// overwrites Head and Tail
 func (ll *DLinkedList[T]) InitList(in []T) {
 	ll.Head = nil
 	ll.Tail = nil

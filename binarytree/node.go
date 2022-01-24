@@ -1,5 +1,6 @@
 package binarytree
 
+// Node for Binary Tree
 type BinaryTreeNode[K Comparable, V any] struct {
 	Key   K
 	Val   V
@@ -7,6 +8,9 @@ type BinaryTreeNode[K Comparable, V any] struct {
 	Right *BinaryTreeNode[K, V]
 }
 
+// Simple Constructur
+//
+// Should probably use BinaryTree.Add
 func NewBinaryTreeNode[K Comparable, V any](key K, val V) *BinaryTreeNode[K, V] {
 	return &BinaryTreeNode[K, V]{
 		Key:   key,

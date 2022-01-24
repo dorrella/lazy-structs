@@ -1,15 +1,20 @@
 package linkedlist
 
+// Simple LinkedList
 type LinkedList[T any] struct {
 	Head *LinkNode[T]
 }
 
+// Constructor for LinkedList
 func NewLinkedList[T any]() *LinkedList[T] {
 	return &LinkedList[T]{
 		Head: nil,
 	}
 }
 
+// Initialize LinkedList with list of values
+//
+// Overwrites Head
 func (ll *LinkedList[T]) InitList(in []T) {
 	ll.Head = nil
 	if len(in) == 0 {

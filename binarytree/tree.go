@@ -1,17 +1,26 @@
+// Basic binary tree implrementation
 package binarytree
 
+// Interface for comparable number constraing
 type Comparable interface {
 	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~float32 | ~float64
 }
 
+// BinaryTree Struct
+// Simple wrapper around Root Node
 type BinaryTree[K Comparable, V any] struct {
 	Root *BinaryTreeNode[K, V]
 }
 
+// Basic constructor for BinaryTree
 func NewBinaryTree[K Comparable, V any]() *BinaryTree[K, V] {
 	return &BinaryTree[K, V]{nil}
 }
 
+// Add key/val pair to BinaryTree
+//
+// Calls wrapper around NewBinaryTreeNode and
+// adds it to the BinaryTree
 func (bt *BinaryTree[K, V]) Add(key K, val V) {
 	if bt.Root == nil {
 		bt.Root = NewBinaryTreeNode(key, val)
@@ -21,6 +30,7 @@ func (bt *BinaryTree[K, V]) Add(key K, val V) {
 	add(key, val, bt.Root)
 }
 
+// Recursive helper function for add
 func add[K Comparable, V any](key K, val V, node *BinaryTreeNode[K, V]) {
 	if key < node.Key {
 		if node.Left == nil {
@@ -37,6 +47,9 @@ func add[K Comparable, V any](key K, val V, node *BinaryTreeNode[K, V]) {
 	}
 }
 
+// Search for key in BinaryTree
+//
+// Returns `value, true` if found `_, false` if not
 func (bt *BinaryTree[K, V]) Search(key K) (V, bool) {
 	var ret V
 	if bt.Root == nil {

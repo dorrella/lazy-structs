@@ -1,17 +1,24 @@
+// Simple Bitmap using a map
 package bitmap
 
-type BitMap struct{
+// Simple BitMap
+//
+// only stores chunks with true values
+// sorta
+type BitMap struct {
 	bm map[uint64]uint64
 }
 
 const bitlen uint64 = 64
 
+// Simple constructor for BitMap
 func NewBitMap() *BitMap {
 	return &BitMap{
 		bm: make(map[uint64]uint64),
 	}
 }
 
+// Sets bit at index to bit value
 func (bitmap *BitMap) Set(index uint64, bit bool) {
 	base := index / bitlen
 	offset := index % bitlen
@@ -25,6 +32,9 @@ func (bitmap *BitMap) Set(index uint64, bit bool) {
 	}
 }
 
+// Gets bit value at index
+//
+// Returns false if never set.
 func (bitmap *BitMap) Get(index uint64) bool {
 	base := index / bitlen
 	offset := index % bitlen
@@ -32,7 +42,7 @@ func (bitmap *BitMap) Get(index uint64) bool {
 
 	val, ok := bitmap.bm[base]
 	if ok {
-		return val & num != 0
+		return val&num != 0
 	}
 	return false
 }
