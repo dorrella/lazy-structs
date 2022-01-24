@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/dorrella/lazy-structs/btree"
+	"github.com/dorrella/lazy-structs/binarytree"
 )
 
 func main() {
-	bt := btree.NewBTree[int, string]()
+	bt := binarytree.NewBinaryTree[int, string]()
 	bt.Add(5, "V")
 	bt.Add(9, "IX")
 	bt.Add(1, "I")
